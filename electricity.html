@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Electricity Emission</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e3f2fd;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #1565c0;
+            color: white;
+            padding: 20px;
+        }
+
+        .input-section {
+            margin-top: 30px;
+        }
+
+        /* IMAGE CONTROL */
+        .input-section img {
+            width: 400px;        /* control image size */
+            margin-top: 20px;    /* space above image */
+            margin-bottom: 25px; /* space below image */
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function calculateElectricity() {
+            var units = document.getElementById("units").value;
+            var carbon = units * 0.82;
+
+            document.getElementById("result").innerHTML =
+                "Electricity CO₂: " + carbon.toFixed(2) + " kg/day";
+
+            var url = document.URL;
+            var transport = url.split("transport=")[1].split("&")[0];
+            var food = url.split("food=")[1];
+
+            document.getElementById("next").href =
+                "result.html?transport=" + transport +
+                "&food=" + food +
+                "&electricity=" + carbon.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+
+<header>
+    <h1>⚡ Electricity Emission</h1>
+</header>
+
+<div class="input-section">
+    <!-- Image above input -->
+    <img src="https://amigoenergy.com/wp-content/uploads/2020/12/electricity-how-it-works-all-about-electrons-over-city-image.jpg" alt="Electricity Image">
+
+    <p>Electricity units per day</p>
+    <input type="number" id="units"><br><br>
+
+    <button onclick="calculateElectricity()">Calculate</button>
+</div>
+
+<p id="result"></p>
+
+<a id="next" target="_blank">➡ Go to Result</a>
+
+</body>
+</html>

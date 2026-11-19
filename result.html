@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final Result</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f2f1;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 20px;
+        }
+
+        .result-box {
+            background-color: #b2dfdb;
+            width: 60%;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* IMAGE CONTROL */
+        .result-box img {
+            width: 350px;        /* control image size */
+            margin-top: 10px;    /* space above image */
+            margin-bottom: 25px; /* space below image */
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📊 Carbon Footprint Result</h1>
+</header>
+
+<div class="result-box">
+    <!-- Image above results -->
+    <img src="https://ttgmice.2017.ttgasia.com/wp-content/uploads/sites/3/2025/02/shutterstock_2087184244_Advito-Tripkicks_640.jpg" alt="Carbon Footprint Result">
+
+    <p id="t"></p>
+    <p id="f"></p>
+    <p id="e"></p>
+    <h3 id="total"></h3>
+    <p id="msg"></p>
+</div>
+
+<script>
+    var url = document.URL;
+
+    var transport = parseFloat(url.split("transport=")[1].split("&")[0]);
+    var food = parseFloat(url.split("food=")[1].split("&")[0]);
+    var electricity = parseFloat(url.split("electricity=")[1]);
+
+    var total = transport + food + electricity;
+
+    document.getElementById("t").innerHTML =
+        "🚗 Transport CO₂: " + transport + " kg";
+
+    document.getElementById("f").innerHTML =
+        "🍽 Food CO₂: " + food + " kg";
+
+    document.getElementById("e").innerHTML =
+        "⚡ Electricity CO₂: " + electricity + " kg";
+
+    document.getElementById("total").innerHTML =
+        "🌍 Total Carbon Footprint: " + total.toFixed(2) + " kg/day";
+
+    if (total < 5)
+        document.getElementById("msg").innerHTML =
+            "✅ Excellent! Very low carbon footprint 🌱";
+    else if (total < 15)
+        document.getElementById("msg").innerHTML =
+            "⚠ Moderate footprint. Try reducing usage 👍";
+    else
+        document.getElementById("msg").innerHTML =
+            "🚨 High footprint! Immediate action required 🌍";
+</script>
+
+</body>
+</html>

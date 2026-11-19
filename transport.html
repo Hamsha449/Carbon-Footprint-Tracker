@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transport Emission</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fffde7;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #f9a825;
+            color: white;
+            padding: 20px;
+        }
+
+        .input-section {
+            margin-top: 30px;
+        }
+
+        /* IMAGE CONTROL HERE */
+        .input-section img {
+            width: 500px;        /* change width here */
+            margin-top: 20px;    /* space above image */
+            margin-bottom: 25px; /* space below image */
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function calculateTransport() {
+            var km = document.getElementById("distance").value;
+            var carbon = km * 0.21;
+
+            document.getElementById("result").innerHTML =
+                "Transport CO₂: " + carbon.toFixed(2) + " kg/day";
+
+            document.getElementById("next").href =
+                "food.html?transport=" + carbon.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+
+<header>
+    <h1>🚗 Transport Emission</h1>
+</header>
+
+<div class="input-section">
+    <img src="https://www.savinodelbene.com/wp-content/uploads/2023/12/intermodal-freight-transport.png" alt="Transport Image">
+
+    <p>Distance travelled per day (km)</p>
+    <input type="number" id="distance"><br><br>
+
+    <button onclick="calculateTransport()">Calculate</button>
+</div>
+
+<p id="result"></p>
+
+<a id="next" target="_blank">➡ Go to Next Page</a>
+
+</body>
+</html>

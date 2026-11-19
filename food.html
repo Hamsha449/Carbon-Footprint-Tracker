@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Emission</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #c2185b;
+            color: white;
+            padding: 20px;
+        }
+
+        .input-section {
+            margin-top: 30px;
+        }
+
+        /* IMAGE CONTROL */
+        .input-section img {
+            width: 500px;        /* change image width */
+            margin-top: 20px;    /* space above image */
+            margin-bottom: 25px; /* space below image */
+        }
+
+        input {
+            padding: 8px;
+            width: 220px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 22px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function calculateFood() {
+            var meals = document.getElementById("meals").value;
+            var carbon = meals * 2.5;
+
+            document.getElementById("result").innerHTML =
+                "Food CO₂: " + carbon.toFixed(2) + " kg/day";
+
+            var data = document.URL.split("transport=")[1];
+
+            document.getElementById("next").href =
+                "electricity.html?transport=" + data +
+                "&food=" + carbon.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+
+<header>
+    <h1>🍽 Food Emission</h1>
+</header>
+
+<div class="input-section">
+    <!-- Image above input -->
+    <img src="https://connect.healthkart.com/wp-content/uploads/2023/01/900x500_banner_HK-Types-of-foods-that-you-should-eat-a-lot-rarely-and-occasionally.png" alt="Food Image">
+
+    <p>Non-vegetarian meals per day</p>
+    <input type="number" id="meals"><br><br>
+
+    <button onclick="calculateFood()">Calculate</button>
+</div>
+
+<p id="result"></p>
+
+<a id="next" target="_blank">➡ Go to Next Page</a>
+
+</body>
+</html>
